@@ -41,6 +41,7 @@ function onFormSubmit(e: GoogleAppsScript.Events.SheetsOnFormSubmit) {
  * @param target The name of the sheet to copy to
  * @param row The row number to copy
  * @param colOffset The number of columns (from the righthand side) to exclude
+ * @returns void
  */
 function copyRowAndDeleteOriginal(sourceSheet: GoogleAppsScript.Spreadsheet.Sheet, targetSheet: GoogleAppsScript.Spreadsheet.Sheet, row: number, colOffset: number) {
   const sourceRange = sourceSheet.getRange(row, 1, 1, sourceSheet.getLastColumn() - colOffset);
@@ -69,15 +70,11 @@ function archive() {
   let postedCol = colFromHeading(sourceSheet, "Posted?");
   if (postedCol == -1) { console.log("Sheet Malformed - Posted? column not found."); return; }
 
-  console.log(postedCol);
-
   // Loop through and remove all of the valid rows
   let value = sourceSheet.getRange(2, postedCol).getValue();
-  console.log(value);
   while (sourceSheet.getLastRow() >= 2 && (value == "Yes" || value == "No")) {
     copyRowAndDeleteOriginal(sourceSheet, targetSheet, 2, 1);
     value = sourceSheet.getRange(2, postedCol).getValue();
-    console.log(value);
   }
 }
 
