@@ -21,6 +21,7 @@ function colFromHeading(
 
 /**
  * Enables links to work properly in the confessions form by adding cell references to each submission when it comes in.
+ * Also sends out messages to the webhook link to update #confessions-mods slack when a new post is made.
  * @param e The event data sent by the onFormSubmit trigger
  * @returns void
  */
@@ -40,6 +41,7 @@ function onFormSubmit(e: GoogleAppsScript.Events.SheetsOnFormSubmit) {
   const referenceCell = sheet.getRange(lastRow, referenceCol);
   referenceCell.setValue("$B$" + lastRow);
 
+  // Send a ping to #confessions-mods
   pingSlack();
 }
 
@@ -82,7 +84,7 @@ function pingSlack() {
   // Get columns that vals will be at
   const timestampCol = colFromHeading(sheet, "Timestamp");
   const confessionCol = colFromHeading(sheet, "Confession");
-  const handleCol = colFromHeading(sheet, "What is the Slack handle of the person you would like to DM this confession to? If you leave this blank, we will assume you want this posted on #confessions.");
+  const handleCol = colFromHeading(sheet, "Slack Handle");
   if (timestampCol == -1 || confessionCol == -1 || handleCol == -1) {
     console.log("Sheet Malformed");
     return;
