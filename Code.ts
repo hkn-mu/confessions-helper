@@ -112,7 +112,7 @@ function pingSlack() {
         ],
         'footer': "gossipgirl",
         'footer_icon': "https://i.imghippo.com/files/lSU401716341582.jpg",
-        'ts': timestamp,
+        'ts': Math.floor(timestamp / 1000),
       }
     ]
   };
