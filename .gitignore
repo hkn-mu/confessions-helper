@@ -1,1 +1,3 @@
-Webhook.ts
+App.ts
+.clasp.json
+node_modules
