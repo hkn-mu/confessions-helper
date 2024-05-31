@@ -2,6 +2,8 @@
 //  * A template for the configuration object for confession-helper.
 //  */
 // namespace App {
+//     /** A supported messaging platform to use - currently Discord or Slack */
+//     export const platform: Payload.SupportedPlatform = "Discord"
 //     /** The URL provided by slack that lets the script send messages to a moderation channel */
 //     export const webhookUrl = "";
 //     /** The name of the spreadsheet where form responses end up after posting */
@@ -11,7 +13,7 @@
 //     /** The ID of the channel where your confessions go */
 //     export const channelId = "C01A8FR2UMR";
 //     /** The color of the attachment in the message */
-//     export const attachmentColor = "";
+//     export const attachmentColor = "#36A64F";
 //     /** A list of slack usernames to ping in reminders  */
 //     export const gossipGirls = []
 //     /** A mapping of column names to spreadsheet headings */

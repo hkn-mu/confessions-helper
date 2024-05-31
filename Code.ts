@@ -103,64 +103,16 @@ function pingSlack() {
   const timestamp = Date.parse(sheet.getRange(lastRow, columnRefs.timestamp).getValue());
   const date = new Date(timestamp);
   const confession = sheet.getRange(lastRow, columnRefs.confession).getValue();
-  let handle = sheet.getRange(lastRow, columnRefs.handle).getValue();
-  if (typeof handle === "string") {
-    handle = handle.replace("@", "");
-  }
-
+  const handle = String(sheet.getRange(lastRow, columnRefs.handle).getValue()) ?? '';
   const url = spreadsheet.getUrl() + "#gid=" + sheet.getSheetId() + "&range=" + sheet.getRange(lastRow, columnRefs.confession).getA1Notation();
 
-  var payload = {
-    'blocks': [
-      {
-        'type': 'section',
-        'text': {
-          'type': 'mrkdwn',
-          'text': App.messages.newConfession
-        }
-      }
-    ],
-    "attachments": [
-      {
-        "color": App.attachmentColor,
-        "blocks": [
-          {
-            "type": "section",
-            "text": {
-              "type": "mrkdwn",
-              "text": `*Confession:*\n${confession}`
-            }
-          },
-          {
-            "type": "section",
-            "fields": [
-              {
-                "type": "mrkdwn",
-                "text": `*When:*\n<!date^${Math.floor(timestamp / 1000)}^{date}|${date.toLocaleDateString('en-US')}>`
-              },
-              {
-                "type": "mrkdwn",
-                "text": `*Send to:*\n${(handle != "" && handle != null) ? `@${handle}` : `<#${App.channelId}>`}`
-              }
-            ]
-          },
-          {
-            "type": "context",
-            "elements": [
-              {
-                "type": "mrkdwn",
-                "text": `<${url}|Jump to Confession>`
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  // Assemble our payload
+  const payload = Payload.formatNewConfessionMessage(confession, timestamp, date, handle, url);
 
   // Set up the options for the UrlFetchApp.fetch() method.
   var options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
     'method': 'post',
+    'contentType': 'application/json',
     'payload': JSON.stringify(payload)
   };
 
@@ -221,45 +173,13 @@ function remindToPost(event: GoogleAppsScript.Events.TimeDriven) {
       const reference: string = entry[columnRefs.reference - 1];
       const url = spreadsheet.getUrl() + "#gid=" + sheet.getSheetId() + "&range=" + reference.replace(/\$/g, "");
 
-      // Assemble our payload:
-      let payload = {
-        "blocks": [
-          {
-            "type": "section",
-            "text": {
-              "type": "mrkdwn",
-              "text": `${App.messages.reminderMessage}\n${pings}`
-            }
-          }
-        ],
-        "attachments": [
-          {
-            "color": App.attachmentColor,
-            "blocks": [
-              {
-                "type": "section",
-                "text": {
-                  "type": "mrkdwn",
-                  "text": `*Message:*\n\`\`\`${confessionString}\`\`\``
-                }
-              },
-              {
-                "type": "context",
-                "elements": [
-                  {
-                    "type": "mrkdwn",
-                    "text": `<${url}|Jump to Confession>`
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
+      // Assemble our payload
+      const payload = Payload.formatReminderMessage(pings, confessionString, url);
 
       // Set up the options for the UrlFetchApp.fetch() method.
       var options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions = {
         'method': 'post',
+        'contentType': 'application/json',
         'payload': JSON.stringify(payload)
       };
 
