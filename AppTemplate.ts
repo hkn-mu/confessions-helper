@@ -3,7 +3,7 @@
 //  */
 // namespace App {
 //     /** A supported messaging platform to use - currently Discord or Slack */
-//     export const platform: Payload.SupportedPlatform = "Discord"
+//     export const platform: Payload.SupportedPlatform = "Slack"
 //     /** The URL provided by slack that lets the script send messages to a moderation channel */
 //     export const webhookUrl: string = "";
 //     /** The name of the spreadsheet where form responses end up after posting */
@@ -11,7 +11,7 @@
 //     /** The name of the sheet where archived data should end up */
 //     export const archiveName: string = "Archive";
 //     /** The ID of the channel where your confessions go */
-//     export const channelId: string = "C01A8FR2UMR";
+//     export const channelId: string = "";
 //     /** The color of the attachment in the message */
 //     export const attachmentColor: string = "#36A64F";
 //     /** A list of slack usernames to ping in reminders  */
@@ -44,6 +44,6 @@
 //         /** A prefix to append to the second line of a time to post reminder */
 //         reminderPingPrefix: ":arrow_forward: ",
 //         /** A postfix to append to the second line of a time to post reminder */
-//         reminderPingPostfix: " :pogsire:"
+//         reminderPingPostfix: ""
 //     }
 // }
