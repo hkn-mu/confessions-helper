@@ -218,13 +218,16 @@ function archive() {
   const maxConfession = Math.max(0, ...sourceSheet.getRange(2, columnRefs.postNum, sourceSheet.getLastRow(), 1).getValues().flat().filter(parseInt).filter(val => !isNaN(val)));
 
   // Get all values from row 2 to the last row at once
-  let values = sourceSheet.getRange(2, columnRefs.posted, sourceSheet.getLastRow(), 1).getValues();
+  let postedVals = sourceSheet.getRange(2, columnRefs.posted, sourceSheet.getLastRow(), 1).getValues();
+  let postNumVals = sourceSheet.getRange(2, columnRefs.postNum, sourceSheet.getLastRow(), 1).getValues();
 
   // So long as there is a resolved row 2 that is not the most recently posted, copy it over and loop.
-  while (values.length > 0 && values[0].length > (columnRefs.posted - 1) && values[0].length > (columnRefs.postNum - 1) &&
-    (values[0][columnRefs.posted - 1] == "Yes" || values[0][columnRefs.posted - 1] == "No") && parseInt(values[0][columnRefs.postNum - 1]) < maxConfession) {
+  while (postedVals.length > 0 && postNumVals.length > 0 && postedVals[0].length > 0 &&
+    (postedVals[0][0] === "Yes" || postedVals[0][0] === "No") &&
+    (postNumVals[0].length === 0 || parseInt(postNumVals[0][0]) < maxConfession)) {
     copyRowAndDeleteOriginal(sourceSheet, targetSheet, 2, 1);
-    values.shift();
+    postedVals.shift();
+    postNumVals.shift();
   }
 
   // Update the references for all of the remaining rows
