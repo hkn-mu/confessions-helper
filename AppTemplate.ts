@@ -5,17 +5,17 @@
 //     /** A supported messaging platform to use - currently Discord or Slack */
 //     export const platform: Payload.SupportedPlatform = "Discord"
 //     /** The URL provided by slack that lets the script send messages to a moderation channel */
-//     export const webhookUrl = "";
+//     export const webhookUrl: string = "";
 //     /** The name of the spreadsheet where form responses end up after posting */
-//     export const datasheetName = "Form Responses 1";
+//     export const datasheetName: string = "Form Responses 1";
 //     /** The name of the sheet where archived data should end up */
-//     export const archiveName = "Archive";
+//     export const archiveName: string = "Archive";
 //     /** The ID of the channel where your confessions go */
-//     export const channelId = "C01A8FR2UMR";
+//     export const channelId: string = "C01A8FR2UMR";
 //     /** The color of the attachment in the message */
-//     export const attachmentColor = "#36A64F";
+//     export const attachmentColor: string = "#36A64F";
 //     /** A list of slack usernames to ping in reminders  */
-//     export const gossipGirls = []
+//     export const gossipGirls: string[] = []
 //     /** A mapping of column names to spreadsheet headings */
 //     export const columnNames = {
 //      /** The column containing the timestamp of the form submission */
