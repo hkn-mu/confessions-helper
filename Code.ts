@@ -158,7 +158,7 @@ function remindToPost(event: GoogleAppsScript.Events.TimeDriven) {
   })
 
   // Get max confession number
-  let confessionNum = Math.max(...sheet.getRange(2, columnRefs.postNum, sheet.getLastRow(), 1).getValues().flat().filter(parseInt).filter(val => !isNaN(val)));
+  let confessionNum = Math.max(0, ...sheet.getRange(2, columnRefs.postNum, sheet.getLastRow(), 1).getValues().flat().filter(parseInt).filter(val => !isNaN(val)));
 
   for (const entry of data) {
     // Again, we use a try-catch to just ignore malformed rows
@@ -215,7 +215,7 @@ function archive() {
   }
 
   // Get the max confession to make sure we don't remove it - will break reminder pings if we do.
-  const maxConfession = Math.max(...sourceSheet.getRange(2, columnRefs.postNum, sourceSheet.getLastRow(), 1).getValues().flat().filter(parseInt).filter(val => !isNaN(val)));
+  const maxConfession = Math.max(0, ...sourceSheet.getRange(2, columnRefs.postNum, sourceSheet.getLastRow(), 1).getValues().flat().filter(parseInt).filter(val => !isNaN(val)));
 
   // Get all values from row 2 to the last row at once
   let values = sourceSheet.getRange(2, columnRefs.posted, sourceSheet.getLastRow(), 1).getValues();
