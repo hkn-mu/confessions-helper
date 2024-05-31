@@ -140,7 +140,7 @@ function pingSlack() {
               },
               {
                 "type": "mrkdwn",
-                "text": `*Send to:*\n${(handle != "" && handle != null) ? `@${handle}` : "<#C01A8FR2UMR>"}`
+                "text": `*Send to:*\n${(handle != "" && handle != null) ? `@${handle}` : `<#${App.channelId}>`}`
               }
             ]
           },
