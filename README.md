@@ -26,15 +26,16 @@ Make sure that you have the following tools installed:
 4. Once the AppScript editor tab opens, navigate to the Project Settings tab by pressing the gear in the sidebar on the left
 5. Copy your "Script ID"
 6. Now, clone this git repository into a directory. There should be no subfolders in the directory. Run `npm install` to install dependencies.
-6. On your computer, create a new folder for the local install of `confessions-helper`. In it, run: `clasp clone {your script id}`. This will initialize your clasp project in your local directory.
+7. Next, run `clasp clone {your script id}`. This will initialize your clasp project in your local directory. Delete the `.js` file this pulls.
+   > **Important**: If you have never worked with Clasp before, make sure that you run `clasp login` and sign in with the correct Google account **before** running clasp clone.
 8. Now, rename AppTemplate.ts to App.ts, and uncomment the entire file.
 9. [Create a slack app](https://api.slack.com/quickstart), add it to your workspace, and [add an Incoming Webhook](https://api.slack.com/messaging/webhooks) pointing at your moderation channel. This link should fill in the `webhookUrl` variable in the configuration.
 10. Right click on the public-facing confessions channel and copy a link to the channel. Paste it, and copy only the segment after the last `/`. This should be your `channelId`.
 11. Fill in the list of moderator usernames in the `gossipGirls` variable, and make any modifications to the formatting of the message or layout of the sheet as you see fit.
 12. Run `clasp push` to push the project back to the remote.
 13. Finally, navigate to `Triggers` in the AppScript editor by clicking the alarm clock in the sidebar on the left. Add an "On Form Submit" trigger pointing to the `onFormSubmit` function, and add a daily timed trigger at your preferred time pointing to the `remindToPost` function. Your project is fully set up!
-> [!WARNING]
-> When adding triggers, you may get a warning from Google that this application has not been verified. Please only install and approve applications that you trust, this one included.
+    > [!WARNING]
+    > When adding triggers, you may get a warning from Google that this application has not been verified. Please only install and approve applications that you trust, this one included.
 
 ## How to use
 
