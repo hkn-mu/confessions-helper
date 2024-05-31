@@ -117,40 +117,42 @@ function pingSlack() {
         }
       }
     ],
-    'attachments': {
-      'color': App.attachmentColor,
-      "blocks": [
-        {
-          "type": "section",
-          "text": {
-            "type": "mrkdwn",
-            "text": `*Confession:*\n${confession}`
+    "attachments": [
+      {
+        "color": App.attachmentColor,
+        "blocks": [
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": `*Confession:*\n${confession}`
+            }
+          },
+          {
+            "type": "section",
+            "fields": [
+              {
+                "type": "mrkdwn",
+                "text": `*When:*\n<!date^${Math.floor(timestamp / 1000)}^{date}|${date.toLocaleDateString('en-US')}>`
+              },
+              {
+                "type": "mrkdwn",
+                "text": `*Send to:*\n${(handle != "" && handle != null) ? `@${handle}` : "<#C01A8FR2UMR>"}`
+              }
+            ]
+          },
+          {
+            "type": "context",
+            "elements": [
+              {
+                "type": "mrkdwn",
+                "text": `<${url}|Jump to Confession>`
+              }
+            ]
           }
-        },
-        {
-          "type": "section",
-          "fields": [
-            {
-              "type": "mrkdwn",
-              "text": `*When:*\n<!date^${Math.floor(timestamp / 1000)}^{date}|${date.toLocaleDateString('en-US')}>`
-            },
-            {
-              "type": "mrkdwn",
-              "text": `*Send to:*\n${(handle != "" && handle != null) ? `@${handle}` : "<#C01A8FR2UMR>"}`
-            }
-          ]
-        },
-        {
-          "type": "context",
-          "elements": [
-            {
-              "type": "mrkdwn",
-              "text": `<${url}|Jump to Confession>`
-            }
-          ]
-        }
-      ]
-    }
+        ]
+      }
+    ]
   }
 
   // Set up the options for the UrlFetchApp.fetch() method.
