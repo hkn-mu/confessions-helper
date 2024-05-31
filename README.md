@@ -59,9 +59,7 @@ Make sure that you have the following tools installed:
 
 3. Copy the User ID's (by right clicking) of all moderators, and fill them into the `gossipGirls` variable.
 
-4. **Convert the attachmentColor variable into an octet** by removing the quotes and hashtag, and adding `0x` in front of it (IE: `0x36A64F`)
-
-5. Make any additional configuration changes as you see fit and return to the general setup guide!
+4. Make any additional configuration changes as you see fit and return to the general setup guide!
 
 ## Contributing New Platforms
 
