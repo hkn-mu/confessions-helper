@@ -34,8 +34,8 @@ Make sure that you have the following tools installed:
 11. Fill in the list of moderator usernames in the `gossipGirls` variable, and make any modifications to the formatting of the message or layout of the sheet as you see fit.
 12. Run `clasp push` to push the project back to the remote.
 13. Finally, navigate to `Triggers` in the AppScript editor by clicking the alarm clock in the sidebar on the left. Add an "On Form Submit" trigger pointing to the `onFormSubmit` function, and add a daily timed trigger at your preferred time pointing to the `remindToPost` function. Your project is fully set up!
-    > [!WARNING]
-    > When adding triggers, you may get a warning from Google that this application has not been verified. Please only install and approve applications that you trust, this one included.
+> [!WARNING]
+> When adding triggers, you may get a warning from Google that this application has not been verified. Please only install and approve applications that you trust, this one included.
 
 ## How to use
 
