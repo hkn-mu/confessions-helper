@@ -8,6 +8,8 @@
 //     export const datasheetName = "Form Responses 1";
 //     /** The name of the sheet where archived data should end up */
 //     export const archiveName = "Archive";
+//     /** The ID of the channel where your confessions go */
+//     export const channelId = "C01A8FR2UMR";
 //     /** The color of the attachment in the message */
 //     export const attachmentColor = "";
 //     /** A list of slack usernames to ping in reminders  */
