@@ -103,7 +103,10 @@ function pingSlack() {
   const timestamp = Date.parse(sheet.getRange(lastRow, columnRefs.timestamp).getValue());
   const date = new Date(timestamp);
   const confession = sheet.getRange(lastRow, columnRefs.confession).getValue();
-  const handle = sheet.getRange(lastRow, columnRefs.handle).getValue();
+  let handle = sheet.getRange(lastRow, columnRefs.handle).getValue();
+  if (typeof handle === "string") {
+    handle = handle.replace("@", "");
+  }
 
   const url = spreadsheet.getUrl() + "#gid=" + sheet.getSheetId() + "&range=" + sheet.getRange(lastRow, columnRefs.confession).getA1Notation();
 
