@@ -13,7 +13,7 @@ namespace Discord {
    */
   export function formatNewConfessionMessage(confession: string, timestamp: number, date: Date, handle: string, url: string) {
     // Convert color to an Octal if it isn't
-    const color = typeof App.attachmentColor === "number" ? App.attachmentColor : parseInt(App.attachmentColor.replace('#', ''), 8);
+    const color = typeof App.attachmentColor === "number" ? App.attachmentColor : parseInt(App.attachmentColor.replace('#', ''), 16);
 
     return {
       embeds: [
@@ -51,7 +51,7 @@ namespace Discord {
    */
   export function formatReminderMessage(pings: string, confession: string, url: string) {
     // Convert color to an Octal if it isn't
-    const color = typeof App.attachmentColor === "number" ? App.attachmentColor : parseInt(App.attachmentColor.replace('#', ''), 8);
+    const color = typeof App.attachmentColor === "number" ? App.attachmentColor : parseInt(App.attachmentColor.replace('#', ''), 16);
 
     return {
       embeds: [
