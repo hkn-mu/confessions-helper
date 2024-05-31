@@ -38,7 +38,7 @@ Make sure that you have the following tools installed:
 
 ## Slack Setup
 
-1. [create a slack app](https://api.slack.com/quickstart), add it to your workspace, and [add an incoming webhook](https://api.slack.com/messaging/webhooks) pointing at your moderation channel. this link should fill in the `webhookurl` variable in the configuration.
+1. [Create a Slack App](https://api.slack.com/quickstart), add it to your workspace, and [add an Incoming Webhook](https://api.slack.com/messaging/webhooks) pointing at your moderation channel. This link should fill in the `webhookUrl` variable in the configuration.
 
 2. Right click on the public-facing confessions channel and copy a link to the channel. Paste it, and copy only the segment after the last `/`. This should be your `channelId`.
 
@@ -70,7 +70,7 @@ This codebase relies solely on webhooks to communicate with messaging platforms.
 1. Add a namespace that exports the following two functions (to get accepted as a PR, do this in its own file in `./platforms`):
 
    ```ts
-   formatNewConfessionMessage: (confession: string, timestamp: number, date: Date, handle: string, url: string) => Object
+   formatNewConfessionMessage(confession: string, timestamp: number, date: Date, handle: string, url: string) => Object
 
    formatReminderMessage(pings: string, confession: string, url: string) => Object
    ```
